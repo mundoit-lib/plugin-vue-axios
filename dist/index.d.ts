@@ -33,16 +33,4 @@ declare const initializeAxios: (config: AxiosConfig) => void;
 
 declare const install: (Vue: any, options: AxiosConfig) => void;
 
-declare const _default: {
-    install: (Vue: any, options: {
-        baseURL: string;
-        db: string;
-        clientID: string;
-        clientSecret: string;
-        fixURL: string;
-        updateToken?: ((...args: unknown[]) => unknown) | undefined;
-        onError?: ((...args: unknown[]) => unknown) | undefined;
-    }) => void;
-};
-
-export { AxiosConfig, axiosInstance, _default as default, getAxiosInstance, initializeAxios, install };
+export { AxiosConfig, axiosInstance, getAxiosInstance, initializeAxios, install };

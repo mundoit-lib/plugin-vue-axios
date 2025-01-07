@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { z } from 'zod';
-import localforage from 'localforage';
 
 export let axiosInstance: axios.AxiosInstance;
 
@@ -71,7 +70,7 @@ export const initializeAxios = (config: AxiosConfig) => {
 
 const updateToken = async (fixURL: string, client: string, secret: string) => {
   try {
-    const refreshToken = await localforage.getItem('refreshToken');
+    const refreshToken = localStorage.getItem('refreshToken');
     const { data } = await axios.post(`${fixURL}/token`, {
       grant_type: 'refresh_token',
       client_id: client,
@@ -85,9 +84,9 @@ const updateToken = async (fixURL: string, client: string, secret: string) => {
     const expires = data.expires_in;
     const now = new Date().getTime();
     const nuevaFechaExpiracion = now + expires * 1000;
-    await localforage.setItem('accessToken', data.access_token);
-    await localforage.setItem('refreshToken', data.refresh_token);
-    await localforage.setItem('tokenExpireDate', nuevaFechaExpiracion);
+    localStorage.setItem('accessToken', data.access_token);
+    localStorage.setItem('refreshToken', data.refresh_token);
+    localStorage.setItem('tokenExpireDate', nuevaFechaExpiracion + '');
     return {...data, nuevaFechaExpiracion};
   } catch (error) {
     throw error;
