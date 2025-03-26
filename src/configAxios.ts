@@ -71,6 +71,9 @@ export const initializeAxios = (config: AxiosConfig) => {
 const updateToken = async (fixURL: string, client: string, secret: string) => {
   try {
     const refreshToken = localStorage.getItem('refreshToken');
+    if (!refreshToken) {
+      throw new Error('No hay token de refresco');
+    }
     const { data } = await axios.post(`${fixURL}/token`, {
       grant_type: 'refresh_token',
       client_id: client,
