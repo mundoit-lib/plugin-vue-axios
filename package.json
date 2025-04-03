@@ -1,10 +1,9 @@
 {
   "name": "@mundoit-lib/plugin-vue-axios",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Vue plugin for Axios integration. Designed to centralize configurations and streamline HTTP request handling for internal projects. Although intended for internal use, it is publicly available on npm for easier distribution. Not recommended for external use.",
   "type": "module",
   "files": [
-    "src",
     "dist"
   ],
   "main": "./dist/index.js",
@@ -43,7 +42,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.3.3",
-    "tsup": "^8.3.5",
+    "tsup": "^8.4.0",
     "typescript": "5.1"
   },
   "dependencies": {

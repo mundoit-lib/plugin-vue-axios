@@ -92,6 +92,9 @@ const updateToken = async (fixURL: string, client: string, secret: string) => {
     localStorage.setItem('tokenExpireDate', nuevaFechaExpiracion + '');
     return {...data, nuevaFechaExpiracion};
   } catch (error) {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('tokenExpireDate');
     throw error;
   }
 }
